@@ -1,6 +1,6 @@
 # CSCI-596 Fall 2021 Project
 
-This project is done by Tianjian Huang and Yue (Julien) Yu. In this project, we compare the performance of several off-the-shelf Basic Linear Algebra Subprograms (BLAS): Intel Math Kernel Library ([MKL](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl.html)), [Apple Accelerate](https://developer.apple.com/documentation/accelerate), and Basic Linear Algebra Subprograms ([OpenBLAS](https://www.openblas.net/)). BLAS provides common linear algebra operations, such as vector addition, scalar multiplication, dot products, linear combinations, and matrix multiplication. They are no doubt the fundamental building blocks of modern numerical software and machine learning as well. We start from the most basic General Matrix Multiply (GEMM) and move to complicated operations such as matrix factorization. We try to give some performance recommendations and also try to analysis what happened behind the scenes.
+This project is done by Tianjian Huang and Yue (Julien) Yu. In this project, we compare the performance of several off-the-shelf Basic Linear Algebra Subprograms (BLAS): Intel Math Kernel Library ([MKL](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl.html)), Apple [Accelerate](https://developer.apple.com/documentation/accelerate), and Basic Linear Algebra Subprograms ([OpenBLAS](https://www.openblas.net/)). BLAS provides common linear algebra operations, such as vector addition, scalar multiplication, dot products, linear combinations, and matrix multiplication. They are no doubt the fundamental building blocks of modern numerical software and machine learning as well. We start from the most basic General Matrix Multiply (GEMM) and move to complicated operations such as matrix factorization. We try to give some performance recommendations and also try to analysis what happened behind the scenes.
 
 ## Numpy Benchmarks
 
@@ -37,19 +37,22 @@ Time taken for each operation is reported; lower is better. Each opreation has b
 | ![](images/Numpy_Other.jpg) |
 
 
-The conclusions are shown as graphs and are briefly explained as follow:
+### Some observations:
 
+* For GEMM:
+It seems that all BLAS library leverage all the potential of the CPU when the matrix size is large (All BLAS library take advantage of AVX-512).
 
-For the multiplication of two n by n matrices:
+* For other linear algebra operations:
 
-• With either 32-bit or 64-bit floating point, GFLOPS converges when n reaches the magnitude of 10e3. Accelerate has slightly lower GFLOPS than the other two.
+	* For sequential operations dominated tasks such as datagen, special functions and stats, all BLAS work the same.
+	* For complicated tasks, in particular SVD decomposition, MKL is far better compared with Accelerate and OpenBlas.
 
-• When MKL, Accelerate and OpenBLAS are compared across various benchmarks, we notice the following:
+	• When MKL, Accelerate and OpenBLAS are compared across various benchmarks, we notice the following:
 
-    • For easier tasks (special, stats, and even inverse), Accelerate is the fastest.
-    
-    • For matrix decomposition (SVD, QR), MKL is faster than Accelerate, and OpenBLAS is the slowest.
-    
-    • For eigenvalue decomposition (i.e., the hardest benchmark), MKL is faster than OpenBLAS, and Accelerate is far slower than the other two.
-    
-    • MKL's performance dominates that of OpenBLAS.
+	    • For easier tasks (special, stats, and even inverse), Accelerate is the fastest.
+	    
+	    • For matrix decomposition (SVD, QR), MKL is faster than Accelerate, and OpenBLAS is the slowest.
+	    
+	    • For eigenvalue decomposition (i.e., the hardest benchmark), MKL is faster than OpenBLAS, and Accelerate is far slower than the other two.
+	    
+	    • MKL's performance dominates that of OpenBLAS.
