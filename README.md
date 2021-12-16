@@ -17,7 +17,7 @@ We use Matmul which is the most fundamental linear algebra operation to measure 
 ### Other Linear Algebra Operations
 
 
-Time taken for each operation is reported; lower is better. Each opreation has been run for 8 times and the average time is reported.
+Time taken for each operation is reported; lower is better. Each operation has been run for 8 times and the average time is reported.
 
 | Task       | MKL | Accelerate | OpenBLAS |
 | :---------- | :----------: | :-----: | :-----: |
@@ -47,7 +47,7 @@ It seems that all BLAS library leverage all the potential of the CPU when the ma
 	* For sequential operations dominated tasks such as datagen, special functions and stats, all BLAS work the same.
 	* For complicated tasks, in particular SVD decomposition, MKL is far better compared with Accelerate and OpenBLAS.
 
-These observation are expected since we are using Intel CPU and the BLAS provided by Intel could better levearge the hardware. Without any doubt, it is a good idea to stick to MKL if on Intel CPU.
+These observations are expected since we are using Intel CPU and the BLAS provided by Intel could better leverage the hardware. Without any doubt, it is a good idea to stick to MKL if on Intel CPU.
 
 ### Vtune Profiler Analysis:
 
@@ -61,4 +61,4 @@ In the next section, we try to use Intel Vtune Profiler to find out why MKL is m
 | -------- |
 | ![](images/openblas_vtune.PNG) |
 
-The images above suggest that both BLAS are very good parallel programs which have more than 80% effective CPU Utilization. Also both BLAS take advantage of the modern SIMD instrctions (AVX-512). However, it can be seen that the bottleneck of OpenBLAS compared with MKL is at the Memory Bound. In particular, we can see 100.0% LLC Miss from OpenBLAS. The reason behind this might be that OpenBLAS uses a cache-unfriendly memory access patterm, making CPU stall and wait for data from the slower main memory.
+The images above suggest that both BLAS are very good parallel programs which have more than 80% effective CPU Utilization. Also both BLAS take advantage of the modern SIMD instructions (AVX-512). However, it can be seen that the bottleneck of OpenBLAS compared with MKL is at the Memory Bound. In particular, we can see 100.0% LLC Miss from OpenBLAS. The reason behind this might be that OpenBLAS uses a cache-unfriendly memory access pattern, making CPU stall and wait for data from the slower main memory.
