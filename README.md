@@ -19,11 +19,23 @@ We use Matmul which is the most fundamental linear algebra operation to measure 
 
 Time taken for each operation is reported; lower is better. Each opreation has been run for 8 times and the average time is reported.
 
-<center>
+| Task       | MKL | Accelerate | OpenBLAS |
+| ---------- | ---------- | ----- | ----- |
+| datagen    | 0.731 | 0.703 | 0.722 |
+| special    | 0.710 | 0.446 | 0.707 |
+| stats      | 1.721 | 1.306 | 1.683 |
+| matmul     | 0.898 | 0.843 | 0.860 |
+| svd        | 0.384 | 0.506 | 1.204 |
+| cholesky   | 0.109 | 0.088 | 0.206 |
+| eigendecomp| 3.668 | 6.450 | 4.226 |
+| inverse    | 0.270 | 0.251 | 0.345 |
+| qr         | 0.393 | 0.530 | 0.783 |
+
+
 | NumPy Linear Algebra Performance|
 | -------- |
 | ![](images/Numpy_Other.jpg) |
-</center>
+
 
 The conclusions are shown as graphs and are briefly explained as follow:
 
