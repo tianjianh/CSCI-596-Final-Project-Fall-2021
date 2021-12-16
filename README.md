@@ -1,6 +1,6 @@
 # CSCI-596 Fall 2021 Project
 
-This project is done by Tianjian Huang and Yue (Julien) Yu. In this project, we compare the performance of several off-the-shelf Basic Linear Algebra Subprograms (BLAS): Intel Math Kernel Library ([MKL](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl.html)), [Apple Accelerate](https://developer.apple.com/documentation/accelerate), and Basic Linear Algebra Subprograms ([OpenBLAS](https://www.openblas.net/)). BLAS provides common linear algebra operations, such as vector addition, scalar multiplication, dot products, linear combinations, and matrix multiplication. They are no doubt the fundamental building blocks of modern numerical software and machine learning as well. We start from the most basic General Matrix Multiply (GEMM) and move to complicated operations such as matrix factorization. We try to give some performance recommendations and also try to analysis what happened behind the scenes.
+This project is done by Tianjian Huang and Yue (Julien) Yu. In this project, we compare the performance of several off-the-shelf Basic Linear Algebra Subprograms (BLAS): Intel Math Kernel Library ([MKL](https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl.html)), [Apple Accelerate](https://developer.apple.com/documentation/accelerate), and Basic Linear Algebra Subprograms ([OpenBLAS](https://www.openblas.net/)). BLAS provides common linear algebra operations, such as vector addition, scalar multiplication, dot products, linear combinations, and matrix multiplication. They are no doubt the fundamental building blocks of modern numerical software and machine learning as well. We start from the most basic General Matrix Multiply (GEMM) and move to complicated operations such as matrix factorization. We try to give some performance recommendations and also try to analyze what happened behind the scenes.
 
 ## Numpy Benchmarks
 
@@ -17,7 +17,7 @@ We use Matmul which is the most fundamental linear algebra operation to measure 
 ### Other Linear Algebra Operations
 
 
-Time taken for each operation is reported; lower is better. Each opreation has been run for 8 times and the average time is reported.
+Time taken for each operation is reported; lower is better. Each operation has been run for 8 times and the average time is reported.
 
 | Task       | MKL | Accelerate | OpenBLAS |
 | :---------- | :----------: | :-----: | :-----: |
@@ -42,7 +42,7 @@ The conclusions are shown as graphs and are briefly explained as follow:
 
 For the multiplication of two n by n matrices:
 
-• With either 32-bit or 64-bit floating point, GFLOPS converges when n reaches the magnitude of 10e3. Accelerate has slightly lower GFLOPS than the other two.
+• With either 32-bit or 64-bit floating point, GFlops converges when n reaches the magnitude of 10e3. Accelerate has slightly lower GFlops than the other two.
 
 • When MKL, Accelerate and OpenBLAS are compared across various benchmarks, we notice the following:
 
