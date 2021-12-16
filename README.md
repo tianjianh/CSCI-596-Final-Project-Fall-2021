@@ -60,3 +60,5 @@ In the next section, we try to use Intel Vtune Profiler to find out why MKL is m
 | VTune OpenBLAS|
 | -------- |
 | ![](images/openblas_vtune.PNG) |
+
+The images above suggest that both BLAS are very good parallel programs which have more than 80% effective CPU Utilization. Also both BLAS take advantage of the modern SIMD instrctions (AVX-512). However, it can be seen that the bottleneck of OpenBLAS compared with MKL is at the Memory Bound. In particular, we can see 100.0% LLC Miss from OpenBLAS. The reason behind this might be that OpenBLAS uses a cache-unfriendly memory access patterm, making CPU stall and wait for data from the slower main memory.
