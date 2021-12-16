@@ -6,13 +6,22 @@ This project is done by Tianjian Huang and Yue (Julien) Yu. In this project, we 
 
 We build numpy against three BLAS libraries and perform the following tests:
 
-### GEMM FLops
+### GEMM Flops
 
 We use Matmul which is the most fundamental linear algebra operation to measure the GFlops of each BLAS library. The tests have been conducted in FP32 and FP64.
 
 | FP64 | FP32 | 
 | ---- | ---- |
 | ![](images/NumPy_MatMul_FP64.jpg) | ![](images/NumPy_MatMul_FP32.jpg) |
+
+### Other Linear Algebra Operations
+
+
+Time taken for each operation is reported; lower is better. Each opreation has been run for 8 times and the average time is reported.
+
+| NumPy Linear Algebra Performance|
+| -------- |
+| ![](images/Numpy_Other.jpg) |
 
 The conclusions are shown as graphs and are briefly explained as follow:
 
