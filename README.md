@@ -19,9 +19,11 @@ We use Matmul which is the most fundamental linear algebra operation to measure 
 
 Time taken for each operation is reported; lower is better. Each opreation has been run for 8 times and the average time is reported.
 
+<center>
 | NumPy Linear Algebra Performance|
 | -------- |
 | ![](images/Numpy_Other.jpg) |
+</center>
 
 The conclusions are shown as graphs and are briefly explained as follow:
 
