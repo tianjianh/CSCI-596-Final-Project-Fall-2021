@@ -45,14 +45,8 @@ It seems that all BLAS library leverage all the potential of the CPU when the ma
 * For other linear algebra operations:
 
 	* For sequential operations dominated tasks such as datagen, special functions and stats, all BLAS work the same.
-	* For complicated tasks, in particular SVD decomposition, MKL is far better compared with Accelerate and OpenBlas.
+	* For complicated tasks, in particular SVD decomposition, MKL is far better compared with Accelerate and OpenBLAS.
 
-	• When MKL, Accelerate and OpenBLAS are compared across various benchmarks, we notice the following:
+These observation are expected since we are using Intel CPU and the BLAS provided by Intel could better levearge the hardware. Without any doubt, it is a good idea to stick to MKL if on Intel CPU.
 
-	    • For easier tasks (special, stats, and even inverse), Accelerate is the fastest.
-	    
-	    • For matrix decomposition (SVD, QR), MKL is faster than Accelerate, and OpenBLAS is the slowest.
-	    
-	    • For eigenvalue decomposition (i.e., the hardest benchmark), MKL is faster than OpenBLAS, and Accelerate is far slower than the other two.
-	    
-	    • MKL's performance dominates that of OpenBLAS.
+In the next section, we try to use Intel Vtune Profiler to find out why MKL is much better than OpenBLAS in SVD. 
