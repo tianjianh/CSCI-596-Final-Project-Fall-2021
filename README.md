@@ -49,6 +49,8 @@ It seems that all BLAS library leverage all the potential of the CPU when the ma
 
 These observation are expected since we are using Intel CPU and the BLAS provided by Intel could better levearge the hardware. Without any doubt, it is a good idea to stick to MKL if on Intel CPU.
 
+### Vtune Profiler Analysis:
+
 In the next section, we try to use Intel Vtune Profiler to find out why MKL is much better than OpenBLAS in SVD. 
 
 | Vtune MKL|
