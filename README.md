@@ -1,9 +1,18 @@
-CSCI-596-Final-Project-Fall-2021
+# CSCI-596 Fall 2021 Project
 
-Tianjian Huang, Yue (Julien) Yu
+This project is done by Tianjian Huang and Yue (Julien) Yu. In this project, we compare the performance of several off-the-shelf Basic Linear Algebra Subprograms (BLAS): Intel Math Kernel Library (MKL), Apple Accelerate, and Basic Linear Algebra Subprograms (OpenBLAS). BLAS provides common linear algebra operations, such as vector addition, scalar multiplication, dot products, linear combinations, and matrix multiplication. They are no doubt the fundamental building blocks of modern numerical software and machine learning as well. We start from the most basic General Matrix Multiply (GEMM) and move to complicated operations such as matrix factorization. We try to give some performance recommendations and also try to analysis what happened behind the scenes.
 
+## Numpy Benchmarks
 
-We compare Intel's MKL (Math Kernel Library), Apple's Accelerate, and OpenBLAS (Basic Linear Algebra Subprograms).
+We build numpy against three BLAS libraries and perform the following tests:
+
+### GEMM FLops
+
+We use Matmul which is the most fundamental linear algebra operation to measure the GFlops of each BLAS library. The tests have been conducted in FP32 and FP64.
+
+| FP64 | FP32 | 
+| ---- | ---- |
+| ![](images/NumPy_MatMul_FP64.jpg) | ![](images/NumPy_MatMul_FP32.jpg) |
 
 The conclusions are shown as graphs and are briefly explained as follow:
 
