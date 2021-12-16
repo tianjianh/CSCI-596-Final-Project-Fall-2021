@@ -20,7 +20,7 @@ We use Matmul which is the most fundamental linear algebra operation to measure 
 Time taken for each operation is reported; lower is better. Each opreation has been run for 8 times and the average time is reported.
 
 | Task       | MKL | Accelerate | OpenBLAS |
-| :----------: | :----------: | :-----: | :-----: |
+| :---------- | :----------: | :-----: | :-----: |
 | datagen    | 0.731 | 0.703 | 0.722 |
 | special    | 0.710 | 0.446 | 0.707 |
 | stats      | 1.721 | 1.306 | 1.683 |
